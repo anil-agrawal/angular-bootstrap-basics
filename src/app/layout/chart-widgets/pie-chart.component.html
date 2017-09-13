@@ -1,0 +1,2 @@
+<div echarts [options]="chartOption" [dataset]="dataset"  (chartInit)="onChartInit($event)" [style.height]="height+'px'" [style.width]="width+'px'" (chartClick)="onChartClick($event)" ></div>
+<app-spinner [show]="showSpinner" [marginLeft]="spinnerLeftMargin+'px'" [marginTop]="spinnerTopMargin+'px'"></app-spinner>

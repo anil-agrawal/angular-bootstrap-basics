@@ -1,0 +1,16 @@
+<div>
+	<div class="header-form-group form-group input-group">
+		<input daterangepicker [attr.id]="dateRangePickerInputId"
+         [options]="dateRangePickerOptions"
+         [disabled]="disabled"
+         (selected)="onChangeDateTime($event)"
+         [(ngModel)]="timeLabel"
+         class="header-form-control form-control"/> 
+		<span class="input-group-btn">
+			<button class="header-form-control btn btn-secondary"
+				type="button" (click)="jquery('#'+dateRangePickerInputId).click()">
+				<i class="fa fa-calendar-check-o"></i>
+			</button>
+		</span>
+	</div>
+</div>

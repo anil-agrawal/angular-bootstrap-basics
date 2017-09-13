@@ -1,0 +1,3 @@
+<div echarts [options]="chartOption" (chartInit)="onChartInit($event)" [style.height]="height+'px'" [style.width]="width+'px'" (chartClick)="onChartClick($event)" ></div>
+<app-spinner [show]="showSpinner" [marginLeft]="spinnerLeftMargin+'px'" [marginTop]="spinnerTopMargin+'px'"></app-spinner>
+<!-- https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-funnel -->

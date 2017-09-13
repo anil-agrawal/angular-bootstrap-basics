@@ -1,0 +1,29 @@
+<div class="panel panel-primary" style="width:100%" [style.height]="height+'px'">
+	<div class="panel-heading" style="height:100%;width:100%;overflow:auto">
+		<table style="width:100%"class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th *ngFor="let header of headers">{{header}}</th>
+                </tr>
+            </thead>
+            <tbody>
+    			<tr *ngFor="let row of list">
+    				<td *ngFor="let key of keys" 
+                        (click)="onChartClick(row[chart.distribution]!==undefined?row[chart.distribution]['value']:'', key)"
+                        [style.width]="row[key]['width']"
+                        [style.text-align]="row[key]['textAlign']"
+                    >
+                         <span class="{{fakeLinkClass}}">
+                            {{appendValueWithUnit(row[key]['value'], units[key])}}
+                         </span> 
+                         &nbsp; &nbsp;
+                         <font color="{{row[key]['color']}}">
+                            <i class="{{row[key]['icon']}}" aria-hidden="true"></i>
+                         </font>
+                         <br/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

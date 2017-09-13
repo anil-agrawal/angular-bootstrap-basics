@@ -1,0 +1,44 @@
+<div>
+	<div class="header-form-group form-group input-group">
+		<input #dateRangeInput type="text" class="header-form-control form-control" [value]="dateRange"  filter="time"> 
+		<span class="input-group-btn">
+			<button class="header-form-control btn btn-secondary"
+				type="button" (click)="openDateTimeRangeModel(dateTimeRangeModel)">
+				<i class="fa fa-calendar-check-o"></i>
+			</button>
+		</span>
+	</div>
+	<ng-template #dateTimeRangeModel let-c="close" let-d="dismiss" >
+		<div class="header-filter-modal-header modal-header" >
+			<h6 class="modal-title">Select Time</h6>
+			<button type="button" class="close" aria-label="Close"
+				(click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="header-filter-modal-body modal-body">
+			<div class="filter-form-group form-group form-inline">
+				<input type="radio" name="optionsRadios" (click)="onChangeSelectionOption(true)" [checked]="isSelectionOptionChecked(true)">
+                 <label class="filter-control-label control-label">Duration</label> 
+                 <select class="filter-form-control form-control" [(ngModel)]="duration" [disabled]="!isLastDuration" (click)="updateDateRange()">
+                       <option *ngFor="let option of durationOptions" [value]="option">{{option}}</option>
+                   </select>
+             </div>
+			<div class="filter-form-group form-group form-inline">
+				 <input type="radio" name="optionsRadios" (click)="onChangeSelectionOption(false)" [checked]="isSelectionOptionChecked(false)">
+                 <label class="filter-control-label control-label">Start</label> 
+                 <input [attr.disabled]="isLastDuration ? true : null" [ngClass]="'filter-form-control form-control'" [value]="startTime | date: 'short'" [(ngModel)]="startTime" [mode]="'dropdown'"  [positionOffset]="'-97%'" dateTimePicker (onChange)="setStartTime($event)" />
+                 <span class=" input-group-btn" ><button class="filter-input-btn btn btn-secondary" [disabled]="isLastDuration" type="button" ><i class="fa fa-calendar"></i></button></span>
+             </div>
+			<div class="filter-form-group form-group form-inline">
+                 <label class="filter-control-label control-label" >End</label> 
+                 <input [attr.disabled]="isLastDuration ? true : null" [ngClass]="'filter-form-control form-control'" [value]="endTime | date: 'short'" [(ngModel)]="endTime" [mode]="'dropdown'"  [positionOffset]="'-97%'" dateTimePicker (onChange)="setEndTime($event)" style="margin-left:13px"/>
+                 <span class=" input-group-btn" ><button class="filter-input-btn btn btn-secondary" [disabled]="isLastDuration" type="button" ><i class="fa fa-calendar"></i></button></span>
+             </div>
+             <div class="filter-form-group form-group form-inline" style="float:right">
+             	<button type="button" class="filter-input-btn filter-control-label btn btn-primary" (click)="onResetFilter()">Reset</button>
+				<button type="button" class="filter-input-btn filter-control-label btn btn-primary" style="margin-left:10px" (click)="onSelectionDone()">Select</button>
+             </div>
+		</div>
+	</ng-template>
+</div>
